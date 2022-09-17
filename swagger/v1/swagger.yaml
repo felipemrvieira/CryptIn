@@ -5,41 +5,37 @@ info:
   version: v1
 paths:
   "/api/v1/accounts":
-    get:
-      summary: list accounts
-      responses:
-        '200':
-          description: successful
     post:
       summary: create account
+      tags:
+      - Accounts
+      parameters: []
       responses:
-        '200':
+        '201':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+              required:
+              - user_id
   "/api/v1/accounts/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
     get:
       summary: show account
-      responses:
-        '200':
-          description: successful
-    patch:
-      summary: update account
-      responses:
-        '200':
-          description: successful
-    put:
-      summary: update account
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete account
+      tags:
+      - Accounts
+      parameters:
+      - name: id
+        in: path
+        description: id
+        default: 1
+        required: true
+        schema:
+          type: integer
       responses:
         '200':
           description: successful
