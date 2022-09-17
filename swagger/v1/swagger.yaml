@@ -39,6 +39,70 @@ paths:
       responses:
         '200':
           description: successful
+  "/api/v1/coin_wallets":
+    post:
+      summary: create coin_wallet
+      tags:
+      - CoinWallet
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wallet_id:
+                  type: integer
+                coin_id:
+                  type: integer
+              required:
+              - wallet_id
+              - coin_id
+    get:
+      summary: list coin_wallets
+      tags:
+      - CoinWallet
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    ballance:
+                      type: string
+                    coin_id:
+                      type: integer
+                    wallet_id:
+                      type: integer
+                    created_at:
+                      type: datetime
+                    updated_at:
+                      type: datetime
+  "/api/v1/coin_wallets/{id}":
+    get:
+      summary: show coin_wallet
+      tags:
+      - CoinWallet
+      parameters:
+      - name: id
+        in: path
+        description: id
+        default: 1
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
   "/api/v1/coins":
     get:
       summary: list coins

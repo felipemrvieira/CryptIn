@@ -18,7 +18,7 @@ class Api::V1::CoinWalletsController < ApplicationController
     @coin_wallet = CoinWallet.new(coin_wallet_params)
 
     if @coin_wallet.save
-      render json: @coin_wallet, status: :created, location: @coin_wallet
+      render json: @coin_wallet, status: :created, location: api_v1_coin_wallets_path(@coin_wallet)
     else
       render json: @coin_wallet.errors, status: :unprocessable_entity
     end
