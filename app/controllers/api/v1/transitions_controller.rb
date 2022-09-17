@@ -18,7 +18,7 @@ class Api::V1::TransitionsController < ApplicationController
     @transition = Transition.new(transition_params)
 
     if @transition.save
-      render json: @transition, status: :created, location: @transition
+      render json: @transition, status: :created, location: api_v1_transitions_path(@transition)
     else
       render json: @transition.errors, status: :unprocessable_entity
     end
