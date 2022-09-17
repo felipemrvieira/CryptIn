@@ -132,6 +132,41 @@ paths:
               required:
               - email
               - password
+  "/api/v1/wallets":
+    post:
+      summary: create wallet
+      tags:
+      - Wallets
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account_id:
+                  type: integer
+              required:
+              - account_id
+  "/api/v1/wallets/{id}":
+    get:
+      summary: show wallet
+      tags:
+      - Wallets
+      parameters:
+      - name: id
+        in: path
+        description: id
+        default: 1
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
 servers:
 - url: http://localhost:3000
 - url: http://remote

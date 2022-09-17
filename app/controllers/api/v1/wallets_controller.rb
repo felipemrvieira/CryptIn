@@ -18,7 +18,7 @@ class Api::V1::WalletsController < ApplicationController
     @wallet = Wallet.new(wallet_params)
 
     if @wallet.save
-      render json: @wallet, status: :created, location: @wallet
+      render json: @wallet, status: :created, location: api_v1_wallets_path(@wallet)
     else
       render json: @wallet.errors, status: :unprocessable_entity
     end
