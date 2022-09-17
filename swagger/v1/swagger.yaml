@@ -1,0 +1,89 @@
+---
+openapi: 3.0.1
+info:
+  title: CryptIn API
+  version: v1
+paths:
+  "/api/v1/accounts":
+    get:
+      summary: list accounts
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create account
+      responses:
+        '200':
+          description: successful
+  "/api/v1/accounts/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show account
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update account
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update account
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete account
+      responses:
+        '200':
+          description: successful
+  "/api/v1/coins":
+    get:
+      summary: list coins
+      tags:
+      - Coins
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    created_at:
+                      type: datetime
+                    updated_at:
+                      type: datetime
+    post:
+      summary: create coin
+      tags:
+      - Coins
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+servers:
+- url: http://localhost:3000
+- url: http://remote

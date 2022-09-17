@@ -1,4 +1,4 @@
-class WalletsController < ApplicationController
+class Api::V1::WalletsController < ApplicationController
   before_action :set_wallet, only: %i[ show update destroy ]
 
   # GET /wallets

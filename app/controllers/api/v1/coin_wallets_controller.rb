@@ -1,4 +1,4 @@
-class CoinWalletsController < ApplicationController
+class Api::V1::CoinWalletsController < ApplicationController
   before_action :set_coin_wallet, only: %i[ show update destroy ]
 
   # GET /coin_wallets

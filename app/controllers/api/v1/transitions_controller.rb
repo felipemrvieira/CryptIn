@@ -1,4 +1,4 @@
-class TransitionsController < ApplicationController
+class Api::V1::TransitionsController < ApplicationController
   before_action :set_transition, only: %i[ show update destroy ]
 
   # GET /transitions

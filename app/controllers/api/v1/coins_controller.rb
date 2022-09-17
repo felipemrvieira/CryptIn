@@ -1,4 +1,4 @@
-class CoinsController < ApplicationController
+class Api::V1::CoinsController < ApplicationController
   before_action :set_coin, only: %i[ show update destroy ]
 
   # GET /coins
@@ -18,7 +18,7 @@ class CoinsController < ApplicationController
     @coin = Coin.new(coin_params)
 
     if @coin.save
-      render json: @coin, status: :created, location: @coin
+      render json: @coin, status: :created, location: api_v1_coin_path(@coin)
     else
       render json: @coin.errors, status: :unprocessable_entity
     end

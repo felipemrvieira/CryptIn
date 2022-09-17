@@ -1,4 +1,4 @@
-class OperationsController < ApplicationController
+class Api::V1::OperationsController < ApplicationController
   before_action :set_operation, only: %i[ show update destroy ]
 
   # GET /operations
