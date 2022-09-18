@@ -15,7 +15,7 @@ class Api::V1::TransitionsController < ApplicationController
 
   # POST /transitions
   def create
-    @transition = Transition.new(transition_params)
+    @transition = TransitionService.new(Transition.new(transition_params)).make_transition
 
     if @transition.save
       render json: @transition, status: :created, location: api_v1_transitions_path(@transition)
