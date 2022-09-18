@@ -15,6 +15,7 @@ RSpec.describe 'api/v1/coins', type: :request do
             properties: {
               id: { type: :integer },
               name: { type: :string },
+              acronym: { type: :string },
               created_at: { type: :datetime},
               updated_at: { type: :datetime}
             }
@@ -36,18 +37,20 @@ RSpec.describe 'api/v1/coins', type: :request do
         type: :object,
         properties: {
           name: { type: :string },
+          acronym: { type: :string },
         },
-        required: ["name"],
+        required: ["name", "acronym"],
       }
 
       response(201, 'successful') do
-        let(:coin) { { name: 'Crypto' } }
+        let(:coin) { { name: 'Crypto', acronym: 'CPT' } }
         
         run_test! do |response|
           expect(response).to have_http_status(201)
           expect(response.content_type).to match(a_string_including("application/json"))
           expect(response.body).to include_json(
-            name: 'Crypto'
+            name: 'Crypto',
+            acronym: 'CPT',
           )
         end
 

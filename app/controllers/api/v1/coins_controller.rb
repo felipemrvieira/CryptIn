@@ -46,6 +46,6 @@ class Api::V1::CoinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def coin_params
-      params.require(:coin).permit(:name)
+      params.require(:coin).permit(:name, :acronym)
     end
 end

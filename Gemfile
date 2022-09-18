@@ -45,6 +45,10 @@ group :development, :test do
   gem "rspec-rails"
   gem "rswag-specs"
   gem 'rspec-json_expectations'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers', '~> 4.0'
+  gem 'rspec-json_expectations'
+  gem 'ffaker'
 end
 
 group :development do
