@@ -144,6 +144,80 @@ paths:
                   type: string
               required:
               - name
+  "/api/v1/operations":
+    post:
+      summary: create operation
+      tags:
+      - Operation
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                kind:
+                  type: integer
+                wallet_origin_id:
+                  type: integer
+                wallet_destination_id:
+                  type: integer
+                coin_id:
+                  type: integer
+              required:
+              - wallet_id
+              - coin_id
+    get:
+      summary: list operations
+      tags:
+      - Operation
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    kind:
+                      type: integer
+                    amount:
+                      type: string
+                    coin_id:
+                      type: integer
+                    wallet_origin_id:
+                      type: integer
+                    wallet_destination_id:
+                      type: integer
+                    created_at:
+                      type: datetime
+                    updated_at:
+                      type: datetime
+  "/api/v1/operations/{id}":
+    get:
+      summary: show operation
+      tags:
+      - Operation
+      parameters:
+      - name: id
+        in: path
+        description: id
+        default: 1
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
   "/api/v1/transitions":
     post:
       summary: create transition
