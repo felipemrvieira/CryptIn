@@ -12,15 +12,13 @@ Wallet.create(account_id: Account.first.id)
 Wallet.create(account_id: Account.last.id)
 Wallet.create(account_id: Account.last.id)
 
-Coin.create(name: "Bitcoin")
-Coin.create(name: "Ethereum")
-Coin.create(name: "Dogecoin")
-Coin.create(name: "Cardano")
+Coin.create(name: "Bitcoin", acronym: "BTC")
+Coin.create(name: "Ethereum", acronym: "ETH")
+Coin.create(name: "Dogecoin", acronym: "DOGE")
+Coin.create(name: "Cardano", acronym: "ADA")
 
-CoinWallet.create(balance: 1, wallet_id: Wallet.last.id, coin_id: Coin.last.id)
-CoinWallet.create(balance: 2, wallet_id: Wallet.last.id, coin_id: Coin.first.id)
-CoinWallet.create(balance: 1, wallet_id: Wallet.first.id, coin_id: Coin.last.id)
-CoinWallet.create(balance: 2, wallet_id: Wallet.first.id, coin_id: Coin.first.id)
+CoinWallet.create(balance: 10, wallet_id: Wallet.first.id, coin_id: Coin.first.id)
+CoinWallet.create(balance: 20, wallet_id: Wallet.last.id, coin_id: Coin.first.id)
 
 Operation.create(
     amount: 3, kind: 2, coin_id: Coin.last.id, 

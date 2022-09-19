@@ -15,7 +15,7 @@ class Api::V1::OperationsController < ApplicationController
 
   # POST /operations
   def create
-    @operation = Operation.new(operation_params)
+    @operation = OperationService.new(Operation.new(operation_params)).make_operation
 
     if @operation.save
       render json: @operation, status: :created, location: api_v1_operation_path(@operation)

@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_092345) do
   end
 
   create_table "coin_wallets", force: :cascade do |t|
-    t.decimal "balance", precision: 8, scale: 2
+    t.decimal "balance", precision: 8, scale: 2, default: "0.0"
     t.bigint "coin_id", null: false
     t.bigint "wallet_id", null: false
     t.datetime "created_at", null: false
