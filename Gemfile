@@ -39,6 +39,7 @@ gem "bootsnap", require: false
 
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'factory_bot_rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -46,7 +47,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "rswag-specs"
   gem 'rspec-json_expectations'
-  gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'ffaker'
 end
