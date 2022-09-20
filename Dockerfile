@@ -15,7 +15,7 @@ ENV LANG=C.UTF-8 \
   BUNDLE_RETRY=3
 
 ENV BUNDLER_VERSION='2.0.2'
-RUN gem install bundler --no-document -v $BUNDLER_VERSION
+RUN gem install bundler -v '2.0.2' && gem list
 
 WORKDIR /usr/src/app
 
