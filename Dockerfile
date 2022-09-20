@@ -13,8 +13,9 @@ RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
 ENV LANG=C.UTF-8 \
   BUNDLE_JOBS=4 \
   BUNDLE_RETRY=3
-  
-RUN gem update --system && gem install bundler
+
+ENV BUNDLER_VERSION='2.0.2'
+RUN gem install bundler --no-document -v $BUNDLER_VERSION
 
 WORKDIR /usr/src/app
 
