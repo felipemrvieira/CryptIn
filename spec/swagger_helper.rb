@@ -24,10 +24,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'http://localhost:3000',
+          url: 'https://salty-reaches-78005.herokuapp.com/',
         },
         {
-          url: 'http://remote',
+          url: 'http://localhost:3000',
         }
       ]
     }
