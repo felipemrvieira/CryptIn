@@ -1,0 +1,655 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CryptIn API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/v1/accounts": {
+      "post": {
+        "summary": "create account",
+        "tags": [
+          "Accounts"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "account",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "user_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/accounts/{id}": {
+      "get": {
+        "summary": "show account",
+        "tags": [
+          "Accounts"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id",
+            "default": 1,
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/coin_wallets": {
+      "post": {
+        "summary": "create coin_wallet",
+        "tags": [
+          "CoinWallet"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "coin_wallet",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "wallet_id": {
+                  "type": "integer"
+                },
+                "coin_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "wallet_id",
+                "coin_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful"
+          }
+        }
+      },
+      "get": {
+        "summary": "list coin_wallets",
+        "tags": [
+          "CoinWallet"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "balance": {
+                    "type": "string"
+                  },
+                  "coin_id": {
+                    "type": "integer"
+                  },
+                  "wallet_id": {
+                    "type": "integer"
+                  },
+                  "created_at": {
+                    "type": "datetime"
+                  },
+                  "updated_at": {
+                    "type": "datetime"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/coin_wallets/{id}": {
+      "get": {
+        "summary": "show coin_wallet",
+        "tags": [
+          "CoinWallet"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id",
+            "default": 1,
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/coins": {
+      "get": {
+        "summary": "list coins",
+        "tags": [
+          "Coins"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "acronym": {
+                    "type": "string"
+                  },
+                  "created_at": {
+                    "type": "datetime"
+                  },
+                  "updated_at": {
+                    "type": "datetime"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "create coin",
+        "tags": [
+          "Coins"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "coin",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "acronym": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "acronym"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard": {
+      "get": {
+        "summary": "show dashboard",
+        "tags": [
+          "Dashboard"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/operations": {
+      "post": {
+        "summary": "create operation",
+        "tags": [
+          "Operation"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "operation",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "amount": {
+                  "type": "integer"
+                },
+                "kind": {
+                  "type": "integer"
+                },
+                "wallet_origin_id": {
+                  "type": "integer"
+                },
+                "wallet_destination_id": {
+                  "type": "integer"
+                },
+                "coin_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "wallet_origin_id",
+                "wallet_destination_id",
+                "coin_id",
+                "kind"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful"
+          }
+        }
+      },
+      "get": {
+        "summary": "list operations",
+        "tags": [
+          "Operation"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "kind": {
+                    "type": "integer"
+                  },
+                  "amount": {
+                    "type": "string"
+                  },
+                  "coin_id": {
+                    "type": "integer"
+                  },
+                  "wallet_origin_id": {
+                    "type": "integer"
+                  },
+                  "wallet_destination_id": {
+                    "type": "integer"
+                  },
+                  "created_at": {
+                    "type": "datetime"
+                  },
+                  "updated_at": {
+                    "type": "datetime"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operations/{id}": {
+      "get": {
+        "summary": "show operation",
+        "tags": [
+          "Operation"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id",
+            "default": 1,
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/transitions": {
+      "post": {
+        "summary": "create transition",
+        "tags": [
+          "Transitions"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "transition",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account_id": {
+                  "type": "integer"
+                },
+                "amount": {
+                  "type": "decimal"
+                }
+              },
+              "required": [
+                "account_id",
+                "amount"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful"
+          }
+        }
+      },
+      "get": {
+        "summary": "list transitions",
+        "tags": [
+          "Transitions"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "amount": {
+                    "type": "string"
+                  },
+                  "account_id": {
+                    "type": "integer"
+                  },
+                  "created_at": {
+                    "type": "datetime"
+                  },
+                  "updated_at": {
+                    "type": "datetime"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transitions/{id}": {
+      "get": {
+        "summary": "show transition",
+        "tags": [
+          "Transitions"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id",
+            "default": 1,
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/auth": {
+      "post": {
+        "summary": "create user",
+        "tags": [
+          "User"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "default": "Felipe Maciel"
+                },
+                "email": {
+                  "type": "string",
+                  "default": "felipemrvieira@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "default": 123123
+                }
+              },
+              "required": [
+                "name",
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/sign_in": {
+      "post": {
+        "summary": "login user",
+        "tags": [
+          "User"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "default": "felipemrvieira@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "default": 123123
+                }
+              },
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/api/v1/wallets": {
+      "post": {
+        "summary": "create wallet",
+        "tags": [
+          "Wallets"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "wallet",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "account_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful"
+          }
+        }
+      }
+    },
+    "/api/v1/wallets/{id}": {
+      "get": {
+        "summary": "show wallet",
+        "tags": [
+          "Wallets"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id",
+            "default": 1,
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "description": "Auth token",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://salty-reaches-78005.herokuapp.com/asdasdads"
+    },
+    {
+      "url": "http://localhost:3000"
+    }
+  ]
+}

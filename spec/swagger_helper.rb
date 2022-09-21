@@ -22,9 +22,19 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {},
+      components: {
+        securitySchemes: {
+          Bearer: {
+            description: "Auth token",
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        }
+      },
       servers: [
         {
-          url: 'https://salty-reaches-78005.herokuapp.com/',
+          url: 'https://salty-reaches-78005.herokuapp.com',
         },
         {
           url: 'http://localhost:3000',

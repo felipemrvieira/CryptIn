@@ -149,6 +149,16 @@ paths:
               required:
               - name
               - acronym
+  "/api/v1/dashboard":
+    get:
+      summary: show dashboard
+      tags:
+      - Dashboard
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: successful
   "/api/v1/operations":
     post:
       summary: create operation
@@ -374,6 +384,13 @@ paths:
       responses:
         '200':
           description: successful
+components:
+  securitySchemes:
+    Bearer:
+      description: Auth token
+      type: apiKey
+      name: Authorization
+      in: header
 servers:
-- url: https://salty-reaches-78005.herokuapp.com/
+- url: https://salty-reaches-78005.herokuapp.com
 - url: http://localhost:3000

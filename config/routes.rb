@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
+      get "/dashboard", to: 'dashboard#index'
       resources :operations
       resources :coin_wallets
       resources :coins
