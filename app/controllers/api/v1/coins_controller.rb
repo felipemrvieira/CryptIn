@@ -1,19 +1,16 @@
 class Api::V1::CoinsController < ApplicationController
   before_action :set_coin, only: %i[ show update destroy ]
 
-  # GET /coins
   def index
     @coins = Coin.all
 
     render json: @coins
   end
 
-  # GET /coins/1
   def show
     render json: @coin
   end
 
-  # POST /coins
   def create
     @coin = Coin.new(coin_params)
 
@@ -24,7 +21,6 @@ class Api::V1::CoinsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /coins/1
   def update
     if @coin.update(coin_params)
       render json: @coin
@@ -33,18 +29,15 @@ class Api::V1::CoinsController < ApplicationController
     end
   end
 
-  # DELETE /coins/1
   def destroy
     @coin.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_coin
       @coin = Coin.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def coin_params
       params.require(:coin).permit(:name, :acronym)
     end
