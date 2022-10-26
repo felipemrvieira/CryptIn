@@ -8,6 +8,5 @@ class Api::V1::Users::SessionsController < DeviseTokenAuth::SessionsController
     def sign_in_params
       params.permit(:email, :password, :password_confirmation)
     end
-  
    
   end
