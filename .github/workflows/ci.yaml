@@ -1,11 +1,34 @@
 name: ci-rails-workflow
 on: [push]
 jobs: 
-  check-application:
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: app_test
+          POSTGRES_PASSWORD: "123123"
+        ports: ["5432:5432"]
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-ruby@v1
-      with:
-        ruby-version: '3.1'
-    - run: ruby hello.rb
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup test database
+        env:
+          RAILS_ENV: test
+          PGHOST: db
+          PGUSER: postgres
+        run: |
+          bin/rails db:setup
+
+      - name: Run tests
+        run: bin/rspec
