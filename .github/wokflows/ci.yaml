@@ -1,0 +1,11 @@
+name: ci-rails-workflow
+on: [push]
+jobs: 
+  check-application:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '3.1.1'
+    - run: ruby hello.rb
